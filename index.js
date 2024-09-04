@@ -6,7 +6,11 @@ require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json()); 
-app.use(cors());
+app.use(cors({
+  origin:["http://localhost:3000","https://frontend2-gamma.vercel.app"],
+  credentials:true,
+  methods:["PUT","POST","DELETE","UPDATE"]
+}));
 
 
 mongoose.connect(process.env.MONGO_URI, {
